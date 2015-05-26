@@ -33,6 +33,8 @@
     ,"kouto-swiss": "^0.11.11"
     ,"autoprefixer-stylus": "^0.6.0"
     ,"axis": "^0.3.2"
+    ,"lost": "^6.2.0"
+    ,"typographic": "^2.9.3"    
 
     ,"browser-sync": "^2.7.4"
   }
