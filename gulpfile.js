@@ -26,6 +26,9 @@ var JS_FOLDER = './public/js/'
     ;
 
 require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, plumber, reload);
+require('./gulp/jshint.js')(gulp, stylus, plumber);
+require('./gulp/csslint.js')(gulp, csslint, plumber);
+require('./gulp/watch.js')(gulp, watch, plumber);
 
 gulp.task('default',
   [
