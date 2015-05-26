@@ -1,7 +1,7 @@
 {
   "name": "frontend-starter",
   "version": "0.0.1",
-  "description": "Generating a frontend starter for first step of dev application",
+  "description": "Toolset to create new frontend projects",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
