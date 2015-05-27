@@ -2,7 +2,7 @@ var
     gulp         = require('gulp')
     ,stylus      = require('gulp-stylus')
     ,csslint     = require('gulp-csslint')
-    // ,jshint      = require('gulp-jshint')
+    ,jshint      = require('gulp-jshint')
     // ,jslint      = require('gulp-jslint')
     // ,uglify      = require('gulp-uglify')
     ,notify      = require('gulp-notify')
@@ -36,12 +36,13 @@ var onError = function(err) {
               };
 
 require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, autoprefixer, plumber, onError, reload, notify);
-// require('./gulp/jshint.js')(gulp, stylus, plumber);
-// require('./gulp/csslint.js')(gulp, csslint, plumber);
+require('./gulp/csslint.js')(CSS_COMPILED, gulp, csslint, plumber, onError, reload, notify);
+require('./gulp/jshint.js')(JS_FOLDER, gulp, jshint, plumber, onError, reload, notify);
+
+gulp.task('lint', ['jshint', 'csslint']);
 
 gulp.task('default',
   [
     'stylus'
-    ,'csslint'
-    // ,'jshint'
+    ,'lint'
 ]);

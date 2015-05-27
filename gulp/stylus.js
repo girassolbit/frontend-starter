@@ -35,7 +35,7 @@
         .pipe(autoprefixer('last 2 versions', 'ie >= 8'))
         .pipe(gulp.dest(CSS_COMPILED))
         .pipe(reload({stream:true, once: true}))
-        .pipe(notify({ // Add gulpif here
+        .pipe(notify({
            title: 'Gulp',
            subtitle: 'success',
            message: 'Stylus compiled, css done!',
