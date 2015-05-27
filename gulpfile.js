@@ -1,21 +1,20 @@
 var
     gulp         = require('gulp')
     ,stylus      = require('gulp-stylus')
-    ,csslint     = require('gulp-csslint')
-    ,jshint      = require('gulp-jshint')
-    ,jslint      = require('gulp-jslint')
-    ,uglify      = require('gulp-uglify')
-    ,notify      = require('gulp-notify')
-    // ,livereload  = require('gulp-livereload')
-    ,traceur     = require('gulp-traceur')
-    ,minify_html = require('gulp-minify-html')
-    ,minify_css  = require('gulp-minify-css')
-    ,imagemin    = require('gulp-imagemin')
-    ,concat      = require('gulp-concat')
+    // ,csslint     = require('gulp-csslint')
+    // ,jshint      = require('gulp-jshint')
+    // ,jslint      = require('gulp-jslint')
+    // ,uglify      = require('gulp-uglify')
+    // ,notify      = require('gulp-notify')
+    // ,traceur     = require('gulp-traceur')
+    // ,minify_html = require('gulp-minify-html')
+    // ,minify_css  = require('gulp-minify-css')
+    // ,imagemin    = require('gulp-imagemin')
+    // ,concat      = require('gulp-concat')
     // ,prefixer    = require('gulp-autoprefixer')
     ,plumber     = require('gulp-plumber')
-    // ,webserver   = require('gulp-webserver')
     ,browserSync = require('browser-sync')
+    ,gulp-util   = require('gulp-util')
     ,reload      = browserSync.reload
     ;
 
@@ -26,14 +25,12 @@ var JS_FOLDER = './public/js/'
     ;
 
 require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, plumber, reload);
-require('./gulp/jshint.js')(gulp, stylus, plumber);
-require('./gulp/csslint.js')(gulp, csslint, plumber);
-require('./gulp/watch.js')(gulp, watch, plumber);
+// require('./gulp/jshint.js')(gulp, stylus, plumber);
+// require('./gulp/csslint.js')(gulp, csslint, plumber);
 
 gulp.task('default',
   [
     'stylus'
-    ,'csslint'
-    ,'jshint'
-    ,'watch'
+    // ,'csslint'
+    // ,'jshint'
 ]);
