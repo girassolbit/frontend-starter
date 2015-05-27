@@ -38,8 +38,11 @@ var onError = function(err) {
 require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, autoprefixer, plumber, onError, reload, notify);
 require('./gulp/csslint.js')(CSS_COMPILED, gulp, csslint, plumber, onError, reload, notify);
 require('./gulp/jshint.js')(JS_FOLDER, gulp, jshint, plumber, onError, reload, notify);
+require('./gulp/jscs.js')(JS_FOLDER, gulp, jscs, plumber, onError, reload, notify);
+require('./gulp/jslint.js')(JS_FOLDER, gulp, jslint, plumber, onError, reload, notify);
+require('./gulp/eslint.js')(JS_FOLDER, gulp, eslint, plumber, onError, reload, notify);
 
-gulp.task('lint', ['jshint', 'csslint']);
+gulp.task('lint', ['jshint', 'jscs', 'jslint', 'eslint', 'csslint']);
 
 gulp.task('default',
   [
