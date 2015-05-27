@@ -6,7 +6,7 @@
       ,jeet         = require('jeet')
       ,rupture      = require('rupture')
       ,kouto_swiss  = require('kouto-swiss')
-      ,autoprefixer = require('autoprefixer-stylus')
+      // ,autoprefixer = require('autoprefixer-stylus')
       ,axis         = require('axis')
       ,lost         = require('lost')
       ,typographic  = require('typographic')
