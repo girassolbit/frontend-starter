@@ -12,15 +12,10 @@
       ,typographic  = require('typographic')
       ;
 
-  module.exports = function (CSS_FOLDER, CSS_COMPILED, gulp, stylus, plumber, reload) {
+  module.exports = function (CSS_FOLDER, CSS_COMPILED, gulp, stylus, autoprefixer, plumber, onError, reload, notify) {
     gulp.task('stylus', function(){
       gulp.src(CSS_FOLDER + '**/*.styl')
-        .pipe(plumber({
-          handleError: function (error) {
-              console.log(error);
-              this.emit('end');
-          }
-        }))
+        .pipe(plumber({errorHandler: onError}))
         .pipe(stylus({
            errors: true
           ,linenos: true
@@ -30,7 +25,6 @@
             jeet()
             ,nib()
             ,rupture()
-            ,autoprefixer({ browsers: ['last 2 versions', 'ie >= 8'] })
             ,axis()
             ,koutoSwiss()
             ,lost()
@@ -38,8 +32,15 @@
           ]
           ,import: ['nib', 'jeet', 'rupture', 'kouto-swiss', 'typographic']
         }))
+        .pipe(autoprefixer('last 2 versions', 'ie >= 8'))
         .pipe(gulp.dest(CSS_COMPILED))
-        .pipe(reload({stream:true}));
+        .pipe(reload({stream:true, once: true}))
+        .pipe(notify({ // Add gulpif here
+           title: 'Gulp',
+           subtitle: 'success',
+           message: 'Stylus compiled, css done!',
+           sound: "Pop"
+         }));
     });
   };
 

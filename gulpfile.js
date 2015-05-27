@@ -1,17 +1,17 @@
 var
     gulp         = require('gulp')
     ,stylus      = require('gulp-stylus')
-    // ,csslint     = require('gulp-csslint')
+    ,csslint     = require('gulp-csslint')
     // ,jshint      = require('gulp-jshint')
     // ,jslint      = require('gulp-jslint')
     // ,uglify      = require('gulp-uglify')
-    // ,notify      = require('gulp-notify')
+    ,notify      = require('gulp-notify')
     // ,traceur     = require('gulp-traceur')
     // ,minify_html = require('gulp-minify-html')
     // ,minify_css  = require('gulp-minify-css')
     // ,imagemin    = require('gulp-imagemin')
     // ,concat      = require('gulp-concat')
-    // ,prefixer    = require('gulp-autoprefixer')
+    ,prefixer    = require('gulp-autoprefixer')
     ,plumber     = require('gulp-plumber')
     ,browserSync = require('browser-sync')
     ,gulp-util   = require('gulp-util')
@@ -24,13 +24,24 @@ var JS_FOLDER = './public/js/'
     ,CSS_COMPILED = CSS_FOLDER + 'compiled/'
     ;
 
-require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, plumber, reload);
+var onError = function(err) {
+                notify.onError({
+                            title:    "Gulp",
+                            subtitle: "Failure!",
+                            message:  "Error: <%= error.message %>",
+                            sound:    "Beep"
+                        })(err);
+
+                this.emit('end');
+              };
+
+require('./gulp/stylus.js')(CSS_FOLDER, CSS_COMPILED, gulp, stylus, autoprefixer, plumber, onError, reload, notify);
 // require('./gulp/jshint.js')(gulp, stylus, plumber);
 // require('./gulp/csslint.js')(gulp, csslint, plumber);
 
 gulp.task('default',
   [
     'stylus'
-    // ,'csslint'
+    ,'csslint'
     // ,'jshint'
 ]);

@@ -23,13 +23,11 @@
     ,"gulp-concat": "^2.5.2"
     ,"gulp-autoprefixer": "^2.1.0"
     ,"gulp-plumber": "^1.0.0"
-    ,"gulp-util": "^3.0.4"
 
     ,"nib": "^1.1.0"
     ,"jeet": "^6.1.2"
     ,"rupture": "^0.6.1"
     ,"kouto-swiss": "^0.11.11"
-    ,"autoprefixer-stylus": "^0.6.0"
     ,"axis": "^0.3.2"
     ,"lost": "^6.2.0"
     ,"typographic": "^2.9.3"
