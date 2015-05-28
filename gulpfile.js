@@ -8,7 +8,7 @@ var
     ,eslint      = require('gulp-eslint')
     ,uglify      = require('gulp-uglify')
     ,notify      = require('gulp-notify')
-    // ,traceur     = require('gulp-traceur')
+    ,traceur     = require('gulp-traceur')
     // ,minify_html = require('gulp-minify-html')
     // ,minify_css  = require('gulp-minify-css')
     // ,imagemin    = require('gulp-imagemin')
@@ -44,6 +44,7 @@ require('./gulp/jscs.js')(JS_FOLDER, gulp, jscs, plumber, onError, reload, notif
 require('./gulp/jslint.js')(JS_FOLDER, gulp, jslint, plumber, onError, reload, notify);
 require('./gulp/eslint.js')(JS_FOLDER, gulp, eslint, plumber, onError, reload, notify);
 require('./gulp/uglify.js')(JS_FOLDER, gulp, uglify, plumber, onError, reload, notify);
+require('./gulp/traceur.js')(JS_FOLDER, JS_COMPILED, gulp, traceur, plumber, onError, reload, notify);
 
 gulp.task('lint', ['jshint', 'jscs', 'jslint', 'eslint', 'csslint']);
 
@@ -52,4 +53,5 @@ gulp.task('default',
     'stylus'
     ,'lint'
     ,'uglify'
+    ,'traceur'
 ]);
