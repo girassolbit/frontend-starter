@@ -11,17 +11,18 @@ var
     ,traceur     = require('gulp-traceur')
     ,minify_html = require('gulp-minify-html')
     ,minify_css  = require('gulp-minify-css')
-    // ,imagemin    = require('gulp-imagemin')
-    // ,concat      = require('gulp-concat')
     ,prefixer    = require('gulp-autoprefixer')
     ,plumber     = require('gulp-plumber')
     ,browserSync = require('browser-sync')
     ,gulp-util   = require('gulp-util')
     ,reload      = browserSync.reload
+    // ,imagemin    = require('gulp-imagemin')
+    // ,concat      = require('gulp-concat')
     ;
 
 var JS_FOLDER = './template/public/js/'
     ,CSS_FOLDER = './template/public/css/'
+    ,IMGS_FOLDER = './template/public/img/'
     ,HTML_FOLDER = './template/'
     ,JS_COMPILED = JS_FOLDER + 'compiled/'
     ,CSS_COMPILED = CSS_FOLDER + 'compiled/'
@@ -49,9 +50,10 @@ require('./gulp/uglify.js')(JS_FOLDER, gulp, uglify, plumber, onError, reload, n
 require('./gulp/traceur.js')(JS_FOLDER, JS_COMPILED, gulp, traceur, plumber, onError, reload, notify);
 require('./gulp/minify_html.js')(HTML_FOLDER, gulp, minify_html, plumber, onError, reload, notify);
 require('./gulp/minify_css.js')(CSS_COMPILED, gulp, minify_css, plumber, onError, reload, notify);
+require('./gulp/browsersync.js')(gulp, browserSync, notify);
 
 //Tasks
-gulp.task('stylus', ['stylus', 'lint']);
+gulp.task('stylus', ['stylus', 'lint', 'browsersync']);
 gulp.task('lint', ['jshint', 'jscs', 'jslint', 'eslint', 'csslint']);
 gulp.task('minify', ['minify_html', 'minify_css']);
-gulp.task('default', ['stylus', 'lint', 'uglify', 'traceur', 'minify']);
+gulp.task('default', ['stylus', 'lint', 'uglify', 'traceur', 'minify', 'browsersync']);
