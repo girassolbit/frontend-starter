@@ -6,7 +6,7 @@ var
     ,jslint      = require('gulp-jslint')
     ,jscs        = require('gulp-jscs')
     ,eslint      = require('gulp-eslint')
-    // ,uglify      = require('gulp-uglify')
+    ,uglify      = require('gulp-uglify')
     ,notify      = require('gulp-notify')
     // ,traceur     = require('gulp-traceur')
     // ,minify_html = require('gulp-minify-html')
@@ -28,10 +28,10 @@ var JS_FOLDER = './public/js/'
 
 var onError = function(err) {
                 notify.onError({
-                            title:    "Gulp",
-                            subtitle: "Failure!",
-                            message:  "Error: <%= error.message %>",
-                            sound:    "Beep"
+                            title:    "Gulp"
+                            ,subtitle: "Failure!"
+                            ,message:  "Error: <%= error.message %>"
+                            ,sound:    "Beep"
                         })(err);
 
                 this.emit('end');
@@ -43,6 +43,7 @@ require('./gulp/jshint.js')(JS_FOLDER, gulp, jshint, plumber, onError, reload, n
 require('./gulp/jscs.js')(JS_FOLDER, gulp, jscs, plumber, onError, reload, notify);
 require('./gulp/jslint.js')(JS_FOLDER, gulp, jslint, plumber, onError, reload, notify);
 require('./gulp/eslint.js')(JS_FOLDER, gulp, eslint, plumber, onError, reload, notify);
+require('./gulp/uglify.js')(JS_FOLDER, gulp, uglify, plumber, onError, reload, notify);
 
 gulp.task('lint', ['jshint', 'jscs', 'jslint', 'eslint', 'csslint']);
 
@@ -50,4 +51,5 @@ gulp.task('default',
   [
     'stylus'
     ,'lint'
+    ,'uglify'
 ]);
