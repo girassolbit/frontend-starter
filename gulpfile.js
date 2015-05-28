@@ -14,7 +14,6 @@ var
     ,prefixer    = require('gulp-autoprefixer')
     ,plumber     = require('gulp-plumber')
     ,browserSync = require('browser-sync')
-    ,gulp-util   = require('gulp-util')
     ,reload      = browserSync.reload
     // ,imagemin    = require('gulp-imagemin')
     // ,concat      = require('gulp-concat')
